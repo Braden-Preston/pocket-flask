@@ -1,0 +1,10 @@
+{% extends 'layouts/dash.html' %}
+{% block content %}
+  <h2>Orders</h2>
+  <a href="{{ url_for('app.get_index') }}">Back</a>
+  {% for order in orders %}
+    <div>
+      <a href="{{ url_for('app.update_order', uid=order.id) }}">{{ order.title }}</a> - {{ order.created }}
+      <div>
+      {% endfor %}
+    {% endblock content %}

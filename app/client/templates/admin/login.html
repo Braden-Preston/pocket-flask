@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block app %}
+  <h1>Log in</h1>
+  <a href="{{ url_for('app.get_customers') }}">Back</a>
+  <form method="post">
+    {{ form.csrf_token }}
+    <div>{{ form.email.label }}: {{ form.email }}</div>
+    <div>{{ form.password.label }}: {{ form.password }}</div>
+    <div>{{ form.password.remember_me }}: {{ form.remember_me }}</div>
+    <button type="submit">Update</button>
+  </form>
+  {% if form.errors %}
+    <ul class="errors">
+      {% for error in form.errors %}<li>{{ error }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+{% endblock app %}

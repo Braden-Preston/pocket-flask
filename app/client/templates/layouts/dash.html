@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block app %}
+  <div>
+    <div>
+      <h1>Dashboard</h1>
+      <a href="/logout">Sign Out</a>
+      <a href="http://127.0.0.1:8090/_">Admin</a>
+    </div>
+ 
+    <hr />
+    <div>
+      <a href="/">Home</a>
+      <a href="/orders">Orders</a>
+      <a href="/customers">Customers</a>
+      <a href="/invoices">Invoices</a>
+      <a href="/payments">Payments</a>
+    </div>
+    {% block content %}{% endblock %}
+  </div>
+{% endblock app %}

@@ -1,0 +1,46 @@
+{% extends 'layouts/dash.html' %}
+{% block content %}
+  <h2>Customer - Edit</h2>
+  <h4>Recent Orders</h4>
+  {% for order in orders['items'] %}<li>{{ order.title }}</li>{% endfor %}
+  <hr />
+  <a href="{{ url_for('app.get_customers') }}">Back</a>
+  <form method="post">
+    {{ form.csrf_token }}
+
+    <!-- <div>{{ form.first.label }}: {{ form.first }}</div> -->
+    <!-- <div>{{ form.last.label }}: {{ form.last }}</div> -->
+    <!-- <div>{{ form.email.label }}: {{ form.email }}</div> -->
+    <!-- <div>{{ form.gender.label }}: {{ form.gender }}</div> -->
+    <div>
+      <label>{{ form.first.label }}</label>
+      {{ form.first }}
+    </div>
+    <div>
+      <label>{{ form.last.label }}</label>
+      {{ form.last }}
+    </div>
+    <div>
+      <label>{{ form.email.label }}</label>
+      {{ form.email }}
+    </div>
+    <div>
+      <label>{{ form.gender.label }}</label>
+      {{ form.gender }}
+    </div>
+    <div>
+      <label>{{ form.cell_phone.label }}</label>
+      {{ form.cell_phone }}
+    </div>
+    <div>
+      <label>{{ form.home_phone.label }}</label>
+      {{ form.home_phone }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+  {% if form.first.errors %}
+    <ul class="errors">
+      {% for error in form.first.errors %}<li>{{ error }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+{% endblock content %}

@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+npx -y tailwindcss -i app/client/src/app.css -o output/public/app.css --minify --no-autoprefixer
+npx -y esbuild app/client/src/app.js --outfile=output/public/app.js --bundle --minify --format=esm
+go build -o output/pocketbook app/pocketbook.go

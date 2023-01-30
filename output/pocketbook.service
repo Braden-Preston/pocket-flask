@@ -1,0 +1,16 @@
+[Unit]
+Description = pocketbase
+
+[Service]
+Type           = simple
+User           = YOUR_USER
+Group          = YOUR_GROUP
+LimitNOFILE    = 4096
+Restart        = always
+RestartSec     = 5s
+StandardOutput = append:/your/path/to/logs/errors.log
+StandardError  = append:/your/path/to/logs/errors.log
+ExecStart      = /your/path/to/pocketbase serve --http="yourdomain.com:80" --https="yourdomain.com:443"
+
+[Install]
+WantedBy = multi-user.target

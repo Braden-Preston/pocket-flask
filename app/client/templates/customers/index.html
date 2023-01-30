@@ -1,0 +1,10 @@
+{% extends 'layouts/dash.html' %}
+{% block content %}
+  <h2>Customers</h2>
+  <a href="{{ url_for('app.get_index') }}">Back</a>
+  {% for customer in customers %}
+    <div>
+      <a href="{{ url_for('app.update_customer', uid=customer.id) }}">{{ customer.first }} {{ customer.last }}</a> - {{ customer.gender }}
+      <div>
+      {% endfor %}
+    {% endblock content %}

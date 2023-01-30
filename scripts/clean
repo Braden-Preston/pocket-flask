@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+rm -rf venv
+rm -rf node_modules
+rm -rf ./**/*/__pycache__
+rm -rf output/public
+rm -rf output/pocketbook

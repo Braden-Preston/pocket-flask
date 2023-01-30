@@ -1,0 +1,89 @@
+[tool.yapf]
+based_on_style = "google"
+spaces_before_comment = 2
+column_limit = 80
+split_before_logical_operator = true
+blank_lines_around_top_level_definition = 2
+blank_lines_between_top_level_imports_and_variables = 2
+
+[tool.djlint]
+indent = 2
+profile = "jinja"
+exclude = "venv,node_modules"
+max_attribute_length = 50
+format_attribute_template_tags = false
+preserve_blank_lines = true
+
+[tool.pylint.main]
+fail-under = 10
+ignore = ["src"]
+ignore-patterns = ["^\\.#", "flask-htmx/*"]
+jobs = 1
+limit-inference-results = 100
+persistent = true
+py-version = "3.9"
+suggestion-mode = true
+
+[tool.pylint.basic]
+argument-naming-style = "snake_case"
+attr-naming-style = "snake_case"
+class-attribute-naming-style = "any"
+class-const-naming-style = "UPPER_CASE"
+class-naming-style = "PascalCase"
+const-naming-style = "UPPER_CASE"
+docstring-min-length = -1
+function-naming-style = "snake_case"
+good-names = ["i", "j", "k", "ex", "Run", "_"]
+method-naming-style = "snake_case"
+module-naming-style = "snake_case"
+variable-naming-style = "snake_case"
+
+[tool.pylint.exceptions]
+overgeneral-exceptions = ["BaseException", "Exception"]
+
+[tool.pylint.format]
+ignore-long-lines = "^\\s*(# )?<?https?://\\S+>?$"
+indent-after-paren = 4
+indent-string = "    "
+max-line-length = 100
+max-module-lines = 1000
+
+[tool.pylint."messages control"]
+confidence = [
+  # "HIGH",
+  "CONTROL_FLOW",
+  "INFERENCE",
+  "INFERENCE_FAILURE",
+  "UNDEFINED"
+]
+disable = [
+  "fixme",
+  "dangerous-default-value",
+  "raw-checker-failed",
+  "too-few-public-methods",
+  "bad-inline-option",
+  "locally-disabled",
+  "file-ignored",
+  "suppressed-message",
+  "useless-suppression",
+  "deprecated-pragma",
+  "use-symbolic-message-instead",
+  "missing-function-docstring",
+  "missing-class-docstring"
+]
+
+[tool.pylint.similarities]
+ignore-comments = true
+ignore-docstrings = true
+ignore-imports = true
+ignore-signatures = true
+min-similarity-lines = 4
+
+[tool.pylint.spelling]
+max-spelling-suggestions = 4
+spelling-ignore-comment-directives = "fmt: on,fmt: off,noqa:,noqa,nosec,isort:skip,mypy:"
+
+[tool.pylint.variables]
+allow-global-unused-variables = true
+callbacks = ["cb_", "_cb"]
+ignored-argument-names = "_.*|^ignored_|^unused_"

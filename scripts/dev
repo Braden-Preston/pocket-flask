@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+LIVERELOAD="npx -y livereload app"
+TAILWIND="npx -y tailwindcss -i app/client/src/app.css -o output/public/app.css --no-autoprefixer --watch"
+ESBUILD="npx -y esbuild app/client/src/app.js --outfile=output/public/app.js --bundle --format=esm --watch"
+POCKET="npx -y nodemon -e go --exec go run app/pocketbook.go serve --debug=false --dir output/pb_data --signal SIGTERM"
+FLASK="sleep 2s; flask --app app/client --debug run"
+
+npx -y concurrently --raw "$LIVERELOAD" "$TAILWIND" "$ESBUILD" "$POCKET" "$FLASK"
